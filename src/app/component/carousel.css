@@ -1,0 +1,31 @@
+.carousel-items {
+  animation: carouselAnim 10s infinite alternate linear;
+}
+
+@keyframes carouselAnim {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(calc(-100% + (6 * 300px)));
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel-items {
+    animation: carouselAnimMobile 60s infinite alternate linear;
+  }
+
+  @keyframes carouselAnimMobile {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(calc(-100% + (5 * 300px)));
+    }
+  }
+}
+
+.carousel-focus:hover {
+  transform: scale(1.1);
+}
