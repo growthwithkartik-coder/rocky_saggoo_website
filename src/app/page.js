@@ -3,36 +3,36 @@ import { FaYoutube, FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react
 import Curveslider from "./component/Curveslider";
 
 export default function Home() {
-  const curveimages  = [
-  {
-    "type": "image",
-    "src": "/gallery/image1.jpg"
-  },
-  {
-    "type": "image",
-    "src": "/gallery/image2.png"
-  },
-  {
-    "type": "video",
-    "src": "/gallery/video1.mp4"
-  },
-  {
-    "type": "video",
-    "src": "/gallery/video2.mp4"
-  },
-  {
-    "type": "video",
-    "src": "/gallery/video3.mp4"
-  },
-  {
-    "type": "video",
-    "src": "/gallery/video4.mp4"
-  },
-  {
-    "type": "video",
-    "src": "/gallery/video5.mov"
-  }
-]
+  const curveimages = [
+    {
+      "type": "image",
+      "src": "/gallery/image1.jpg"
+    },
+    {
+      "type": "image",
+      "src": "/gallery/image2.png"
+    },
+    {
+      "type": "video",
+      "src": "/gallery/video1.mp4"
+    },
+    {
+      "type": "video",
+      "src": "/gallery/video2.mp4"
+    },
+    {
+      "type": "video",
+      "src": "/gallery/video3.mp4"
+    },
+    {
+      "type": "video",
+      "src": "/gallery/video4.mp4"
+    },
+    {
+      "type": "video",
+      "src": "/gallery/video5.mov"
+    }
+  ]
 
   const items = [
     {
@@ -63,31 +63,31 @@ export default function Home() {
   return (
     <>
       <div className="border">
-  {/* Header */}
-  <div className="flex justify-center items-center w-full bg-white text-center px-4">
-    <p className="text-black font-medium py-4 text-lg md:text-xl">
-      Real Estate & Business Growth Experts! 💼 Empowering founders & startups to DOMINATE! 💰
-    </p>
-  </div>
+        {/* Header */}
+        <div className="flex justify-center items-center w-full bg-white text-center px-4">
+          <p className="text-black font-medium py-4 text-lg md:text-xl">
+            Real Estate & Business Growth Experts! 💼 Empowering founders & startups to DOMINATE! 💰
+          </p>
+        </div>
 
-  {/* Contact Info */}
-  <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start px-5 py-4 gap-3">
-    {/* Name */}
-    <p style={{ fontFamily: "cursive" }} className="text-2xl md:text-3xl font-sans">
-      Rocky Saggoo
-    </p>
+        {/* Contact Info */}
+        <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start px-5  pb-2 gap-3">
+          {/* Name */}
+          <p style={{ fontFamily: "cursive" }} className="text-2xl md:text-3xl font-sans">
+            Rocky Saggoo
+          </p>
 
-    {/* Email */}
-    <div className="text-center md:text-left">
-      <p className="text-sm md:text-base">📧 Email: enquire@rockysaggoocapital.com</p>
-    </div>
+          {/* Email */}
+          <div className="text-center md:text-left">
+            <p className="text-sm md:text-base mt-2">📧 Email: enquire@rockysaggoocapital.com</p>
+          </div>
 
-    {/* Phone */}
-    <div className="text-center md:text-left">
-      <p className="text-sm md:text-base">📞 Phone: +91 83779 59959</p>
-    </div>
-  </div>
-</div>
+          {/* Phone */}
+          <div className="text-center md:text-left">
+            <p className="text-sm md:text-base mt-2">📞 Phone: +91 83779 59959</p>
+          </div>
+        </div>
+      </div>
 
 
       <section className="relative w-full bg-black text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-16">
@@ -209,7 +209,7 @@ export default function Home() {
           {/* Right Image */}
           <div className="flex justify-center">
             <img
-              src="/img/hero.jpg"
+              src="/img/statergy.jpg"
               alt="Business Coach"
               className="w-full max-w-md object-contain shadow-2xl rounded-lg"
             />
@@ -334,7 +334,7 @@ export default function Home() {
       </section>
 
       {/* <Carousel /> */}
-      <Curveslider images={curveimages}/>
+      <Curveslider images={curveimages} />
 
       <section className="w-full mt-5 bg-white px-6 md:px-20 py-16">
         <div className="text-center max-w-3xl mx-auto">
