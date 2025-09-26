@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { FaYoutube, FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Curveslider from "./component/Curveslider";
+import CustomButton from "./ui/Button";
+import TermsModal from "./ui/Modal";
 
 export default function Home() {
   const curveimages = [
@@ -71,7 +73,7 @@ export default function Home() {
         </div>
 
         {/* Contact Info */}
-        <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start px-5  pb-2 gap-3">
+        <div className="flex flex-col md:flex-row md:justify-between items-center md:items-start px-5  pb-2 gap-0 lg:gap-3">
           {/* Name */}
           <p style={{ fontFamily: "cursive" }} className="text-2xl md:text-3xl font-sans">
             Rocky Saggoo
@@ -81,7 +83,6 @@ export default function Home() {
           <div className="text-center md:text-left">
             <p className="text-sm md:text-base mt-2">📧 Email: enquire@rockysaggoocapital.com</p>
           </div>
-
           {/* Phone */}
           <div className="text-center md:text-left">
             <p className="text-sm md:text-base mt-2">📞 Phone: +91 83779 59959</p>
@@ -92,16 +93,15 @@ export default function Home() {
 
       <section className="relative w-full bg-black text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-16">
         <div className="flex-1 max-w-2xl text-center md:text-left">
-          <h1 className="text-5xl md:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight">
             <span className="block italic  text-white ">
               Entrepreneurship
             </span>
             <span className="block italic   ">
-              Growth
-            </span>
-            <span className="block italic   00">
-              Mastery
-            </span>
+                Growth Mastery
+              </span>
+  
+
           </h1>
 
           <p className="mt-8 text-lg md:text-xl lg:text-2xl italic text-gray-300 leading-relaxed">
@@ -109,9 +109,8 @@ export default function Home() {
             <br /> and create a company that thrives with or without you.
           </p>
 
-          <button className="mt-10 px-10 py-4 border-2 border-white rounded-xl text-base md:text-lg lg:text-xl font-semibold tracking-wide hover:bg-white hover:text-black transition duration-300 shadow-lg">
-            🚀 Get Your Free Growth Guide ➝
-          </button>
+         {/* <CustomButton/> */}
+         <TermsModal/>
         </div>
 
         <div className="mt-12 md:mt-0">
@@ -245,14 +244,15 @@ export default function Home() {
             </p>
 
             {/* CTA Button */}
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <a
                 href="#"
                 className="block w-full md:w-auto text-center border border-white rounded-xl px-8 py-4 text-lg font-semibold hover:bg-white hover:text-black transition"
               >
                 Claim Your Free Business Book ➞
               </a>
-            </div>
+            </div> */}
+            <TermsModal/>
           </div>
 
           {/* Right Image */}
@@ -277,7 +277,7 @@ export default function Home() {
                 "0 -10px 15px -3px rgba(0, 0, 0, 0.1), 0 -4px 6px -2px rgba(0, 0, 0, 0.05)",
             }}
           >
-            <h2 className=" text-xl md:text-2xl lg:text-2xl font-semibold">
+            <h2 className=" text-sm md:text-2xl lg:text-2xl font-semibold ">
               Watch, Listen & Connect – Choose Your Platform
             </h2>
           </div>
@@ -391,14 +391,7 @@ export default function Home() {
             </p>
 
             {/* CTA Button */}
-            <div className="mt-6">
-              <a
-                href="#"
-                className="block w-full md:w-auto text-center bg-black text-white rounded-xl px-8 py-4 text-lg font-semibold hover:bg-gray-800 transition"
-              >
-                Claim Your Free Business Book
-              </a>
-            </div>
+           <TermsModal/>
           </div>
 
           {/* Right Image */}
