@@ -92,7 +92,7 @@ export default function Home() {
 
 
       <section className="relative w-full bg-black text-white flex flex-col md:flex-row items-center justify-center px-6 md:px-20 py-16">
-        <div className="flex-1 max-w-2xl text-center md:text-left">
+        <div data-aos="fade-right" data-aos-duration="1000"  className="flex-1 max-w-2xl text-center md:text-left">
           <h1 className="text-4xl md:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight">
             <span className="block italic  text-white ">
               Entrepreneurship
@@ -113,7 +113,7 @@ export default function Home() {
          <TermsModal/>
         </div>
 
-        <div className="mt-12 md:mt-0">
+        <div data-aos="fade-left" data-aos-duration="1000"   className="mt-12 md:mt-0">
           <img
             src="/img/hero.jpg"
             alt="Entrepreneur Coaching"
@@ -125,34 +125,34 @@ export default function Home() {
 
       <section className="w-full bg-gradient-to-b from-gray-100 to-white text-center px-6 py-16">
         {/* Top Heading */}
-        <h2 className="text-xl md:text-2xl font-bold">
+        <h2 data-aos="fade-up" className="text-xl md:text-2xl font-bold">
           Most Startups Struggle to Survive Beyond 5 Years...
         </h2>
-        <p className="mt-4 text-lg italic text-gray-700 max-w-3xl mx-auto">
+        <p data-aos="fade-up" className="mt-4 text-lg italic text-gray-700 max-w-3xl mx-auto">
           Not because of lack of passion or ideas—but because they never built the right
           foundation, systems, and growth strategy to sustain momentum.
         </p>
 
         {/* Subheading */}
-        <h3 className="mt-12 text-xl md:text-2xl font-semibold italic">
+        <h3 data-aos="fade-up" className="mt-12 text-xl md:text-2xl font-semibold italic">
           Do any of these challenges sound like you?...
         </h3>
 
         {/* Card Grid */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
+          <div data-aos="fade-down" data-aos-duration="2000" className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200 ">
             <p className="italic font-medium">
               You’re putting in endless hours <br /> but profits just won’t grow.
             </p>
           </div>
 
-          <div className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
+          <div data-aos="fade-down" data-aos-duration="2000"  className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
             <p className="italic font-medium">
               You feel like the business can’t <br /> run a day without you.
             </p>
           </div>
 
-          <div className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
+          <div data-aos="fade-down" data-aos-duration="2000"  className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
             <p className="italic font-medium">
               Stress piles up the moment you <br /> try to take a break.
             </p>
@@ -161,20 +161,20 @@ export default function Home() {
 
         {/* Bottom Row */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
+          <div data-aos="fade-down" data-aos-duration="2000"  className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
             <p className="italic font-medium">
               It’s been years since you enjoyed real freedom as an owner.
             </p>
           </div>
 
-          <div className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
+          <div data-aos="fade-down" data-aos-duration="2000"  className="bg-white shadow-md rounded-lg p-6 text-center border border-gray-200">
             <p className="italic font-medium">
               Your competitors keep scaling— <br /> while you’re stuck fighting fires.
             </p>
           </div>
         </div>
 
-        <p className="mt-7 text-lg italic text-gray-700 max-w-3xl mx-auto">
+        <p data-aos="fade-down" data-aos-duration="2000"  className="mt-7 text-lg italic text-gray-700 max-w-3xl mx-auto">
           If this feels like your reality, you’re not alone—but it doesn’t have to stay
           this way. In this training, I’ll reveal the 5 essential principles that will
           transform the way you grow and scale your business—for good.
@@ -185,7 +185,7 @@ export default function Home() {
       <section className="w-full bg-white px-6 md:px-20 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left Content */}
-          <div>
+          <div data-aos="fade-right" data-aos-duration="2000"  >
             <p className="text-xl text-gray-600 uppercase tracking-wide">
               Business Expansion Training Reveals
             </p>
@@ -206,7 +206,7 @@ export default function Home() {
           </div>
 
           {/* Right Image */}
-          <div className="flex justify-center">
+          <div data-aos="fade-left" data-aos-duration="2000"  className="flex justify-center">
             <img
               src="/img/statergy.jpg"
               alt="Business Coach"
@@ -218,9 +218,9 @@ export default function Home() {
 
 
       <section className="w-full bg-black text-white px-6 md:px-20 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+        <div  className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left Content */}
-          <div>
+          <div data-aos="fade-right" data-aos-duration="2000" >
             <h2 className="text-3xl md:text-4xl font-extrabold leading-snug">
               Why This Training Matters Now More Than Ever
             </h2>
@@ -256,7 +256,7 @@ export default function Home() {
           </div>
 
           {/* Right Image */}
-          <div className="flex justify-center">
+          <div data-aos="fade-left" data-aos-duration="2000"  className="flex justify-center">
             <img
               src="/img/rockysaggoohand.png" // replace with your image path
               alt="Business Coach"
@@ -338,23 +338,23 @@ export default function Home() {
 
       <section className="w-full mt-5 bg-white px-6 md:px-20 py-16">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-xl md:text-2xl font-semibold italic">
+          <h2 data-aos="fade-up" className="text-xl md:text-2xl font-semibold italic">
             You don&apos;t rise to the level of your goals — <br />
             you fall to the level of your systems.
           </h2>
-          <p className="mt-2 text-gray-600 italic">
+          <p data-aos="fade-up" className="mt-2 text-gray-600 italic">
             This training gives you the systems that actually work.
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
           {/* Left Content */}
-          <div>
+          <div data-aos="fade-left" data-aos-duration="2000" >
             <h3 className="text-2xl md:text-3xl font-extrabold">
               IS THIS TRAINING FOR YOU?
             </h3>
 
-            <p className="mt-4 italic text-gray-700">
+            <p  className="mt-4 italic text-gray-700">
               If you’re generating $1M+ in annual revenue but growth feels harder
               instead of easier — this was built for you.
             </p>
@@ -395,7 +395,7 @@ export default function Home() {
           </div>
 
           {/* Right Image */}
-          <div className="flex justify-center">
+          <div data-aos="fade-right" data-aos-duration="2000"  className="flex justify-center">
             <img
               src="/img/white_bg.jpg" // replace with your actual image path
               alt="Business Expert"
