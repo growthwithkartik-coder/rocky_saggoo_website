@@ -89,66 +89,73 @@ function Landing() {
 
 
 
-const handleSubmit = async (e, type) => {
-  e.preventDefault();
+  const handleSubmit = async (e, type) => {
+    e.preventDefault();
 
-  setError("");
+    setError("");
 
-  const formData = new FormData(e.target);
+    const formData = new FormData(e.target);
 
-  const payload = {
-    fullName: formData.get("fullName")?.trim(),
-    email: formData.get("email")?.trim(),
-    phoneNumber: formData.get("phoneNumber")?.trim(),
-    profession: formData.get("profession")?.trim(),
-  };
+    const payload = {
+      fullName: formData.get("fullName")?.trim(),
+      email: formData.get("email")?.trim(),
+      phoneNumber: formData.get("phoneNumber")?.trim(),
+      profession: formData.get("profession")?.trim(),
+    };
 
-  // Validation
-  if (
-    !payload.fullName ||
-    !payload.email ||
-    !payload.phoneNumber ||
-    !payload.profession
-  ) {
-    setError("All fields are required.");
-    return;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailRegex.test(payload.email)) {
-    setError("Please enter a valid email address.");
-    return;
-  }
-
-  try {
-    setSubmitting(true);
-
-    const response = await fetch(
-      "https://a6scfrd5w6.execute-api.ap-south-1.amazonaws.com/user/AdsInquiryRsSchema",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data?.message || "Something went wrong");
+    // Validation
+    if (
+      !payload.fullName ||
+      !payload.email ||
+      !payload.phoneNumber ||
+      !payload.profession
+    ) {
+      setError("All fields are required.");
+      return;
     }
 
-    setSubmitted(type);
-    e.target.reset();
-  } catch (err) {
-    setError(err.message || "Failed to submit form.");
-  } finally {
-    setSubmitting(false);
-  }
-};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(payload.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+
+      const response = await fetch(
+        "https://a6scfrd5w6.execute-api.ap-south-1.amazonaws.com/user/AdsInquiryRsSchema",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || "Something went wrong");
+      }
+
+      setSubmitted(type);
+
+      const link = document.createElement("a");
+      link.href = "/RSC_Manifesto_Unseen_Economics.pdf"; // PDF URL
+      link.download = "RSC_Manifesto_Unseen_Economics.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      e.target.reset();
+    } catch (err) {
+      setError(err.message || "Failed to submit form.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
 
   // async function handleSubmit(e: FormEvent<HTMLFormElement>, kind: "apply" | "book") {
@@ -296,7 +303,7 @@ const handleSubmit = async (e, type) => {
 
       {/* THESIS */}
       <section id="thesis" className="border-t border-line">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-24 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-36">
           <div className="grid md:grid-cols-12 gap-10">
             <div className="md:col-span-4 reveal">
               <div className="mono-label">The Thesis</div>
@@ -310,7 +317,7 @@ const handleSubmit = async (e, type) => {
                   width={900}
                   height={1100}
                   loading="lazy"
-                  className="w-full h-auto max-w-[280px] -rotate-2"
+                  className="w-full h-auto max-w-70 -rotate-2"
                 />
               </div>
             </div>
@@ -482,52 +489,52 @@ const handleSubmit = async (e, type) => {
                 </select> */}
 
                 {tier === "boardroom" && submitted !== "apply" && (
-                <form onSubmit={(e) => handleSubmit(e, "apply")} className="mt-10 space-y-6">
-  {/* <p className="mono-label">
-    You're in range. A few details and RSC will reach out.
-  </p> */}
+                  <form onSubmit={(e) => handleSubmit(e, "apply")} className="mt-10 space-y-6">
+                    <p className="mono-label">
+    Download the Framework Before Your Competitors Do
+  </p>
 
-  <FormGrid>
-    <Field
-      label="Full Name"
-      name="fullName"
-      required
-    />
+                    <FormGrid>
+                      <Field
+                        label="Full Name"
+                        name="fullName"
+                        required
+                      />
 
-    <Field
-      label="Email"
-      name="email"
-      type="email"
-      required
-    />
+                      <Field
+                        label="Email"
+                        name="email"
+                        type="email"
+                        required
+                      />
 
-    <Field
-      label="Phone Number"
-      name="phoneNumber"
-      required
-    />
+                      <Field
+                        label="Phone Number"
+                        name="phoneNumber"
+                        required
+                      />
 
-    <Field
-      label="Profession"
-      name="profession"
-      required
-    />
-  </FormGrid>
+                      <Field
+                        label="Profession"
+                        name="profession"
+                        required
+                      />
+                    </FormGrid>
 
-  <button
-    type="submit"
-    disabled={submitting}
-    className="bg-foreground text-background px-8 py-4 font-medium hover:bg-accent transition-colors disabled:opacity-50"
-  >
-    {submitting ? "Submitting..." : "Apply for Boardroom Access →"}
-  </button>
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="bg-foreground text-background px-8 py-4 font-medium hover:bg-accent transition-colors disabled:opacity-50"
+                    >
+                      {submitting ? "Submitting..." : "Apply for Boardroom Access →"}
+                    </button>
 
-  {error && (
-    <p className="text-red-500 text-sm">
-      {error}
-    </p>
-  )}
-</form>
+                    {error && (
+                      <p className="text-red-500 text-sm">
+                        {error}
+                      </p>
+                    )}
+                  </form>
                 )}
 
                 {tier === "book" && submitted !== "book" && (
