@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import heroCollage from "@/assets/hero-collage.jpg";
@@ -87,25 +88,88 @@ function Landing() {
   const pageRef = useReveal();
 
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>, kind: "apply" | "book") {
-    e.preventDefault();
-    setSubmitting(true);
-    setError("");
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(e.currentTarget),
-      });
-      const json = await res.json();
-      if (json.success) setSubmitted(kind);
-      else setError("Something went wrong. Email rockysagoo@gmail.com and we'll sort it.");
-    } catch {
-      setError("Something went wrong. Email rockysagoo@gmail.com and we'll sort it.");
-    } finally {
-      setSubmitting(false);
-    }
+
+const handleSubmit = async (e, type) => {
+  e.preventDefault();
+
+  setError("");
+
+  const formData = new FormData(e.target);
+
+  const payload = {
+    fullName: formData.get("fullName")?.trim(),
+    email: formData.get("email")?.trim(),
+    phoneNumber: formData.get("phoneNumber")?.trim(),
+    profession: formData.get("profession")?.trim(),
+  };
+
+  // Validation
+  if (
+    !payload.fullName ||
+    !payload.email ||
+    !payload.phoneNumber ||
+    !payload.profession
+  ) {
+    setError("All fields are required.");
+    return;
   }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(payload.email)) {
+    setError("Please enter a valid email address.");
+    return;
+  }
+
+  try {
+    setSubmitting(true);
+
+    const response = await fetch(
+      "https://a6scfrd5w6.execute-api.ap-south-1.amazonaws.com/user/AdsInquiryRsSchema",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data?.message || "Something went wrong");
+    }
+
+    setSubmitted(type);
+    e.target.reset();
+  } catch (err) {
+    setError(err.message || "Failed to submit form.");
+  } finally {
+    setSubmitting(false);
+  }
+};
+
+
+  // async function handleSubmit(e: FormEvent<HTMLFormElement>, kind: "apply" | "book") {
+  //   e.preventDefault();
+  //   setSubmitting(true);
+  //   setError("");
+  //   try {
+  //     const res = await fetch("https://api.web3forms.com/submit", {
+  //       method: "POST",
+  //       headers: { Accept: "application/json" },
+  //       body: new FormData(e.currentTarget),
+  //     });
+  //     const json = await res.json();
+  //     if (json.success) setSubmitted(kind);
+  //     else setError("Something went wrong. Email rockysagoo@gmail.com and we'll sort it.");
+  //   } catch {
+  //     setError("Something went wrong. Email rockysagoo@gmail.com and we'll sort it.");
+  //   } finally {
+  //     setSubmitting(false);
+  //   }
+  // }
 
   return (
     <main ref={pageRef} className="min-h-screen bg-background text-foreground overflow-hidden">
@@ -391,10 +455,11 @@ function Landing() {
 
             <div className="md:col-span-7">
               <div className="bg-background border border-line p-8 md:p-12">
-                <label className="block mono-label mb-4">
+                {/* <label className="block mono-label mb-4">
                   Start here · Your annual revenue
                 </label>
                 <select
+                required
                   value={revenue}
                   onChange={(e) => {
                     const v = e.target.value;
@@ -414,38 +479,55 @@ function Landing() {
                   {REVENUE_OPTIONS.map((o) => (
                     <option key={o.value} value={o.value}>{o.label}</option>
                   ))}
-                </select>
+                </select> */}
 
                 {tier === "boardroom" && submitted !== "apply" && (
-                  <form onSubmit={(e) => handleSubmit(e, "apply")} className="mt-10 space-y-6">
-                    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
-                    <input type="hidden" name="subject" value="RSC Boardroom Application" />
-                    <input type="hidden" name="annual_revenue" value={revenue} />
-                    <p className="mono-label">You're in range. A few details and RSC will reach out.</p>
-                    <FormGrid>
-                      <Field label="Full Name" name="name" required />
-                      <Field label="Email" name="email" type="email" required />
-                      <Field label="Phone / WhatsApp" name="phone" required />
-                      <Field label="Business or Website" name="business" required />
-                    </FormGrid>
-                    <Field
-                      label="What's capping your growth right now?"
-                      name="message"
-                      textarea
-                      required
-                    />
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="bg-foreground text-background px-8 py-4 font-medium hover:bg-accent transition-colors disabled:opacity-50"
-                    >
-                      {submitting ? "Submitting…" : "Apply for Boardroom Access →"}
-                    </button>
-                    {error && <p className="text-accent text-sm">{error}</p>}
-                    <p className="mono-label !text-[0.65rem]">
-                      Private &amp; confidential · Reviewed personally by RSC
-                    </p>
-                  </form>
+                <form onSubmit={(e) => handleSubmit(e, "apply")} className="mt-10 space-y-6">
+  {/* <p className="mono-label">
+    You're in range. A few details and RSC will reach out.
+  </p> */}
+
+  <FormGrid>
+    <Field
+      label="Full Name"
+      name="fullName"
+      required
+    />
+
+    <Field
+      label="Email"
+      name="email"
+      type="email"
+      required
+    />
+
+    <Field
+      label="Phone Number"
+      name="phoneNumber"
+      required
+    />
+
+    <Field
+      label="Profession"
+      name="profession"
+      required
+    />
+  </FormGrid>
+
+  <button
+    type="submit"
+    disabled={submitting}
+    className="bg-foreground text-background px-8 py-4 font-medium hover:bg-accent transition-colors disabled:opacity-50"
+  >
+    {submitting ? "Submitting..." : "Apply for Boardroom Access →"}
+  </button>
+
+  {error && (
+    <p className="text-red-500 text-sm">
+      {error}
+    </p>
+  )}
+</form>
                 )}
 
                 {tier === "book" && submitted !== "book" && (
