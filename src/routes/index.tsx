@@ -170,9 +170,9 @@ function Landing() {
   //     });
   //     const json = await res.json();
   //     if (json.success) setSubmitted(kind);
-  //     else setError("Something went wrong. Email rockysagoo@gmail.com and we'll sort it.");
+  //     else setError("Something went wrong. Email rockysaggoocapital@gmail.com and we'll sort it.");
   //   } catch {
-  //     setError("Something went wrong. Email rockysagoo@gmail.com and we'll sort it.");
+  //     setError("Something went wrong. Email rockysaggoocapital@gmail.com and we'll sort it.");
   //   } finally {
   //     setSubmitting(false);
   //   }
@@ -599,10 +599,10 @@ function Landing() {
           </nav>
           <div className="text-right">
             <a
-              href="mailto:rockysagoo@gmail.com"
+              href="mailto:rockysaggoocapital@gmail.com"
               className="text-foreground border-b border-line hover:border-foreground"
             >
-              rockysagoo@gmail.com
+              rockysaggoocapital@gmail.com
             </a>
             <p className="mono-label mt-2">© 2026 · By application only</p>
           </div>
