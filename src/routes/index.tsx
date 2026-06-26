@@ -390,7 +390,7 @@ function Landing() {
 
       {/* SYSTEM */}
       <section id="system" className="border-t border-line">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-24 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-36">
           <div className="grid md:grid-cols-12 gap-10 items-end mb-12">
             <div className="md:col-span-7 reveal">
               <div className="mono-label">The System</div>
@@ -443,7 +443,7 @@ function Landing() {
 
       {/* APPLY */}
       <section id="apply" className="border-t border-line bg-muted/40">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-24 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-36">
           <div className="grid md:grid-cols-12 gap-10">
             <div className="md:col-span-5">
               <div className="mono-label">The Terms</div>
@@ -490,7 +490,7 @@ function Landing() {
 
                 {tier === "boardroom" && submitted !== "apply" && (
                   <form onSubmit={(e) => handleSubmit(e, "apply")} className="mt-10 space-y-6">
-                    <p className="mono-label">
+                    <p className="mono-label font-bold">
     Download the Framework Before Your Competitors Do
   </p>
 
@@ -526,7 +526,7 @@ function Landing() {
                       disabled={submitting}
                       className="bg-foreground text-background px-8 py-4 font-medium hover:bg-accent transition-colors disabled:opacity-50"
                     >
-                      {submitting ? "Submitting..." : "Apply for Boardroom Access →"}
+                      {submitting ? "Submitting..." : "Download the e-book"}
                     </button>
 
                     {error && (
