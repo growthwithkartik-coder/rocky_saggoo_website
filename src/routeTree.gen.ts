@@ -9,8 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R6CorridorsRouteImport } from './routes/6-corridors'
+import { Route as R4InvisibleMachinesRouteImport } from './routes/4-invisible-machines'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R6CorridorsRoute = R6CorridorsRouteImport.update({
+  id: '/6-corridors',
+  path: '/6-corridors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R4InvisibleMachinesRoute = R4InvisibleMachinesRouteImport.update({
+  id: '/4-invisible-machines',
+  path: '/4-invisible-machines',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +31,50 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/4-invisible-machines': typeof R4InvisibleMachinesRoute
+  '/6-corridors': typeof R6CorridorsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/4-invisible-machines': typeof R4InvisibleMachinesRoute
+  '/6-corridors': typeof R6CorridorsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/4-invisible-machines': typeof R4InvisibleMachinesRoute
+  '/6-corridors': typeof R6CorridorsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/4-invisible-machines' | '/6-corridors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/4-invisible-machines' | '/6-corridors'
+  id: '__root__' | '/' | '/4-invisible-machines' | '/6-corridors'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R4InvisibleMachinesRoute: typeof R4InvisibleMachinesRoute
+  R6CorridorsRoute: typeof R6CorridorsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/6-corridors': {
+      id: '/6-corridors'
+      path: '/6-corridors'
+      fullPath: '/6-corridors'
+      preLoaderRoute: typeof R6CorridorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/4-invisible-machines': {
+      id: '/4-invisible-machines'
+      path: '/4-invisible-machines'
+      fullPath: '/4-invisible-machines'
+      preLoaderRoute: typeof R4InvisibleMachinesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R4InvisibleMachinesRoute: R4InvisibleMachinesRoute,
+  R6CorridorsRoute: R6CorridorsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
